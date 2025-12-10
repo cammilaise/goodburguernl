@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOOD BURGUER - Hamburgueria Artesanal</title>
+    <style>
+        /* CSS DE EMERGÊNCIA */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; background: #0A0A0A; color: white; }
+        .container { width: 100%; padding: 0 15px; }
+        button, .btn { min-height: 44px; cursor: pointer; }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-area">
+                    <img src="logo2 - Copia.png" alt="GOOD BURGUER" class="logo-img">
+                </div>
+                <h1>GOOD BURGUER</h1>
+            </div>
+            
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+            
+            <nav class="menu" id="main-menu">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#cardapio">Cardápio</a></li>
+                    <li><a href="#promocoes">Promoções</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn btn-pedido" onclick="abrirCarrinho()">
+                    🛒 Carrinho (<span id="contador-carrinho">0</span>)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Mais que uma Mordida, Uma História!</h1>
+                <p class="hero-subtitle">Hamburgueres 100% artesanais com ingredientes selecionados, molhos exclusivos e o verdadeiro sabor do melhor que o artesal tem para oferecer.</p>
+                <div class="hero-buttons">
+                    <a href="#cardapio" class="btn btn-primary">Ver Cardápio</a>
+                    <a href="#cardapio" class="btn btn-secondary">Fazer Pedido</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="combo-familia.jpeg" alt="Hamburguer Artesanal" class="burger-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMkQyRDJEIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmaWxsPSIjRkZGIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLvuI/wn5G9PC90ZXh0Pgo8L3N2Zz4K'">
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOÇÕES -->
+    <section class="promocoes" id="promocoes">
+        <div class="container">
+            <h2 class="section-title">🔥 Promoções Imperdíveis!</h2>
+            <p class="section-subtitle">Aproveite nossas ofertas especiais por tempo limitado</p>
+            <div class="promocao-grid">
+                <div class="promocao-card card-destaque">
+                    <div class="tag-desconto">35% OFF</div>
+                    <img src="combo-casal.jpeg" alt="Combo Casal" class="promocao-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDM1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzNTAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMkQyRDJEIi8+Cjx0ZXh0IHg9IjE3NSIgeT0iMTAwIiBmaWxsPSIjRkZGIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLvuI/wn5G9PC90ZXh0Pgo8L3N2Zz4K'">
+                    <h3 class="promocao-title">Combo Casal Good Burguer</h3>
+                    <p class="promocao-description">2 Smash Cheddar + Porção de Batata Completa + 1 Refri 2L. Perfeito para um jantar a dois!</p>
+                    <div class="promocao-precos">
+                        <span class="preco-antigo">De R$ 169,99</span>
+                        <span class="preco-novo">Por R$ 138,00</span>
+                    </div>
+                    <button class="btn btn-promocao" onclick="abrirModal(17)">Eu quero essa oferta!</button>
+                </div>
+                <div class="promocao-card">
+                    <div class="tag-desconto">25% OFF</div>
+                    <img src="smash-cheddar.jpeg" alt="Smash Cheddar" class="promocao-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDM1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzNTAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMkQyRDJEIi8+Cjx0ZXh0IHg9IjE3NSIgeT0iMTAwIiBmaWxsPSIjRkZGIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLvuI/wn5G9PC90ZXh0Pgo8L3N2Zz4K'">
+                    <h3 class="promocao-title">Smash Cheddar Promo</h3>
+                    <p class="promocao-description">Nosso smash mais pedido com bacon, cheddar cremoso e maionese caseira. Imperdível!</p>
+                    <div class="promocao-precos">
+                        <span class="preco-antigo">De R$ 38,99</span>
+                        <span class="preco-novo">Por R$ 28,00</span>
+                    </div>
+                    <button class="btn btn-promocao" onclick="abrirModal(2)">Aproveitar</button>
+                </div>
+                <div class="promocao-card">
+                    <div class="tag-desconto">40% OFF</div>
+                    <img src="combo-familia.jpeg" alt="Combo Família" class="promocao-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDM1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzNTAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMkQyRDJEIi8+Cjx0ZXh0IHg9IjE3NSIgeT0iMTAwIiBmaWxsPSIjRkZGIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLvuI/wn5G9PC90ZXh0Pgo8L3N2Zz4K'">
+                    <h3 class="promocao-title">Combo Família Good Burguer</h3>
+                    <p class="promocao-description">4 Smash Simples + Porção de Batata com Frango + 2 Refris 2L. Para toda a família!</p>
+                    <div class="promocao-precos">
+                        <span class="preco-antigo">De R$ 279,99</span>
+                        <span class="preco-novo">Por R$ 232,00</span>
+                    </div>
+                    <button class="btn btn-promocao" onclick="abrirModal(21)">Aproveitar</button>
+                    <section class="destaque">
+</section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARDÁPIO -->
+    <section class="cardapio" id="cardapio">
+        <div class="container">
+            <h2 class="section-title">🍔 Nosso Cardápio</h2>
+            <p class="section-subtitle">Todos os nossos produtos são 100% artesanais!</p>
+
+     <button class="btn btn-promocao" onclick="abrirModal(21)">Aproveitar</button>
+ 
+            <div class="filtros-cardapio">
+                <button class="filtro-btn active" onclick="filtrarCategoria('todos')">Todos</button>
+                <button class="filtro-btn" onclick="filtrarCategoria('smash')">Smash Burgers</button>
+                <button class="filtro-btn" onclick="filtrarCategoria('gb')">GB Artesanal</button>
+                <button class="filtro-btn" onclick="filtrarCategoria('tradicional')">Tradicional</button>
+                <button class="filtro-btn" onclick="filtrarCategoria('combos')">Combos</button>
+                <button class="filtro-btn" onclick="filtrarCategoria('bebidas')">Bebidas</button>
+            </div>
+
+
+            <div class="grid-cardapio" id="grid-cardapio">
+                <!-- Cards serão carregados pelo JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="sobre" id="sobre">
+        <div class="container sobre-container">
+            <div class="sobre-image">
+                <img src="logo-1.png" alt="GOOD BURGUER" class="sobre-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMkQyRDJEIi8+Cjx0ZXh0IHg9IjI1MCIgeT0iMTUwIiBmaWxsPSIjRkZGIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLvuI/wn5G9PC90ZXh0Pgo8L3N2Zz4K'">
+            </div>
+            <div class="sobre-content">
+                <h2 class="section-title">Nossa História: Paixão pelo GOOD BURGUER</h2>
+                <p class="sobre-text">
+                    No <strong>GOOD BURGUER</strong>, acreditamos que a comida de verdade deve nos trazer conforto e alegria.
+                    Nascemos do desejo de resgatar o <strong>verdadeiro sabor da grelha</strong> em um hambúrguer 100% artesanal.
+                </p>
+                <p class="sobre-text">
+                    Nossos ingredientes são <strong>selecionados com rigor</strong>: carne fresca moída diariamente, pães macios feitos por padeiros locais e molhos exclusivos, criados com receitas de família.
+                </p>
+                <p class="sobre-text destaque-missao">
+                    <strong>Nossa Missão:</strong> Servir o melhor hambúrguer artesanal, com paixão em cada detalhe, e proporcionar uma experiência que você só encontra aqui, com gosto de feito em casa.
+                </p>
+                <a href="#cardapio" class="btn btn-primary btn-sobre">Ver Cardápio Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GOOD BURGUER</h3>
+                    <p>Hamburgueria Artesanal</p>
+                    <p>🍔 O sabor do que é bom de verdade</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>🕒 Horário: 19h às 23h</p>
+                    <p>Quarta a Domingo</p>
+                    <p></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/goodburgueerr/" target="_blank" class="social-icon">📷 Instagram</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Formas de Pagamento</h4>
+                    <p>💳 Cartão • 📱 PIX • 💵 Dinheiro</p>
+                    <div class="pagamento-info">
+                        <p>🛵 Delivery Disponível</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 GOOD BURGUER - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL PRODUTO -->
+    <div id="modal-produto" class="modal" onclick="fecharModalFora(event, 'modal-produto')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="fecharModal('modal-produto')">&times;</span>
+            <div class="modal-body">
+                <img id="modal-imagem" src="" alt="" class="modal-imagem">
+                <h2 id="modal-nome" class="modal-nome"></h2>
+                <p id="modal-descricao" class="modal-descricao"></p>
+                
+                <div id="selecao-queijo-batata" class="selecao-queijo-batata" style="display: none;">
+                    <h5>🧀 Escolha o queijo:</h5>
+                    <div class="botoes-queijo">
+                        <button class="btn-queijo" onclick="selecionarQueijo(this, 'mussarela')">Mussarela</button>
+                        <button class="btn-queijo" onclick="selecionarQueijo(this, 'cheddar')">Cheddar</button>
+                        <button class="btn-queijo" onclick="selecionarQueijo(this, 'catupiry')">Catupiry</button>
+                    </div>
+                </div>
+
+                <div class="modal-preco-container">
+                    <div class="modal-preco" id="modal-preco">R$ 0,00</div>
+                    <div class="quantidade-container">
+                        <button class="btn-quantidade" onclick="decrementarQuantidade()">-</button>
+                        <span id="quantidade" class="quantidade">1</span>
+                        <button class="btn-quantidade" onclick="incrementarQuantidade()">+</button>
+                    </div>
+                </div>
+
+                <div class="observacao-produto">
+                    <h5>📝 Observações:</h5>
+                    <textarea id="observacao-produto" class="input-observacao" placeholder="Sem cebola, ponto da carne, maionese à parte..." oninput="atualizarContadorCaracteres()"></textarea>
+                    <div class="contador-caracteres">
+                        <span id="contador-caracteres">0</span>/200 caracteres
+                    </div>
+                </div>
+
+                <button id="btn-pedido-modal" class="btn-adicionar-pedido" onclick="adicionarAoCarrinho()">
+                    🛒 ADICIONAR PEDIDO AO CARRINHO
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CARRINHO -->
+    <div id="modal-carrinho" class="modal carrinho-modal" onclick="fecharModalFora(event, 'modal-carrinho')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-carrinho" onclick="fecharModal('modal-carrinho')">&times;</span>
+            <h2>🛒 Seu Carrinho</h2>
+            
+            <div id="itens-carrinho" class="itens-carrinho"></div>
+            
+            <div class="carrinho-total">
+                <div class="total-item">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">R$ 0,00</span>
+                </div>
+                <div class="total-item">
+                    <span>Taxa de Entrega:</span>
+                    <span id="taxa-entrega">R$ 5,00</span>
+                </div>
+                <div class="total-item total-geral">
+                    <span>Total:</span>
+                    <span id="total-geral">R$ 0,00</span>
+                </div>
+            </div>
+            
+            <div class="form-entrega">
+                <h3>📋 Informações de Entrega</h3>
+                <div class="form-grid">
+                    <input type="text" id="nome-cliente" class="form-input" placeholder="Seu nome completo *" required>
+                    <input type="tel" id="telefone" class="form-input" placeholder="Telefone com DDD *" required>
+                    <input type="text" id="endereco" class="form-input" placeholder="Endereço completo *" required>
+                    <input type="text" id="cidade" class="form-input" placeholder="Cidade *" required>
+                </div>
+                
+                <div class="forma-pagamento">
+                    <h3>💳 Forma de Pagamento</h3>
+                    <div class="opcoes-pagamento">
+                        <label class="opcao-pagamento" onclick="selecionarFormaPagamento('cartao')">
+                            <input type="radio" name="forma-pagamento" value="cartao">
+                            <span class="checkmark"></span>
+                            <span class="opcao-texto">💳 Cartão</span>
+                        </label>
+                        <label class="opcao-pagamento" onclick="selecionarFormaPagamento('dinheiro')">
+                            <input type="radio" name="forma-pagamento" value="dinheiro">
+                            <span class="checkmark"></span>
+                            <span class="opcao-texto">💵 Dinheiro</span>
+                        </label>
+                        <label class="opcao-pagamento" onclick="selecionarFormaPagamento('pix')">
+                            <input type="radio" name="forma-pagamento" value="pix" checked>
+                            <span class="checkmark"></span>
+                            <span class="opcao-texto">📱 PIX</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="botoes-finalizacao">
+                <button class="btn-finalizar btn-pix" onclick="finalizarComPix()">
+                    📱 Pagar com PIX
+                </button>
+                <button class="btn-finalizar btn-whatsapp" onclick="finalizarPedidoWhatsApp()">
+                    💬 Finalizar no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
