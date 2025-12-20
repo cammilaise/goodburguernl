@@ -1046,4 +1046,54 @@ button, .btn, .btn-pedir, .btn-promocao {
     .itens-carrinho {
         -webkit-overflow-scrolling: touch;
     }
+}/* ========================================= */
+/* ESTILOS PARA IMAGENS - ESPECIAL GUARANÁ 2L */
+/* ========================================= */
+
+/* Garantir que todas as imagens carreguem */
+.card-imagem, .modal-imagem, .promocao-img {
+    background-color: #1a1a1a;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
+
+/* Container da imagem do Guaraná 2L */
+.guarana-container {
+    position: relative;
+    background: linear-gradient(135deg, #0A3D62 0%, #1B4F72 100%);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.guarana-container::before {
+    content: "🥤";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    opacity: 0.3;
+}
+
+/* Fallback visual para imagens que não carregam */
+.card-imagem[src*="guarana"],
+.card-imagem[alt*="Guaraná"],
+.card-imagem[alt*="guarana"] {
+    background: linear-gradient(135deg, #0A3D62 0%, #1B4F72 100%);
+    position: relative;
+}
+
+.card-imagem[src*="guarana"]::after,
+.card-imagem[alt*="Guaraná"]::after {
+    content: "🥤 Guaraná";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
