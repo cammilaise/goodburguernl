@@ -252,7 +252,46 @@
                     <span id="total-geral">R$ 0,00</span>
                 </div>
             </div>
+            <!-- FALLBACK PARA GUARANÁ 2L (escondido por padrão) -->
+<div id="guarana-fallback" style="display: none;">
+    <img src="https://d3ddx6b2p2pevg.cloudfront.net/Custom/Content/Products/10/11/1011792_refrigerante-guarana-antarctica-2l-geraozinho_m1_637657210461631928.png" 
+         alt="Guaraná 2L" 
+         onload="console.log('✅ Imagem do Guaraná 2L carregada via fallback')">
+</div>
+
+<script>
+// Função para forçar carregamento do Guaraná 2L
+function carregarGuarana() {
+    const produtosComGuarana = document.querySelectorAll('[src*="guarana"], [alt*="Guaraná"]');
+    
+    produtosComGuarana.forEach(img => {
+        // Se a imagem não carregou, força o fallback
+        if (img.complete && img.naturalHeight === 0) {
+            console.log("🔄 Forçando carregamento do Guaraná 2L");
             
+            // Para o card no cardápio
+            if (img.classList.contains('card-imagem')) {
+                img.src = "https://d3ddx6b2p2pevg.cloudfront.net/Custom/Content/Products/10/11/1011792_refrigerante-guarana-antarctica-2l-geraozinho_m1_637657210461631928.png";
+            }
+            
+            // Para o modal
+            if (img.classList.contains('modal-imagem')) {
+                img.src = "https://d3ddx6b2p2pevg.cloudfront.net/Custom/Content/Products/10/11/1011792_refrigerante-guarana-antarctica-2l-geraozinho_m1_637657210461631928.png";
+            }
+        }
+    });
+}
+
+// Executar quando a página carregar
+document.addEventListener('DOMContentLoaded', carregarGuarana);
+
+// Executar quando abrir qualquer modal
+document.querySelectorAll('.btn-pedir, .btn-promocao').forEach(btn => {
+    btn.addEventListener('click', function() {
+        setTimeout(carregarGuarana, 500);
+    });
+});
+</script>
             <div class="form-entrega">
                 <h3>📋 Informações de Entrega</h3>
                 <div class="form-grid">
@@ -297,4 +336,5 @@
 
     <script src="./script.js"></script>
 </body>
+
 </html>
