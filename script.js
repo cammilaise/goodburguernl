@@ -35,7 +35,15 @@ const produtos = [
 
     // Bebidas (24-29) - CORRIGIDAS AS IMAGENS
     { id: 24, nome: "Mate Couro 1L", descricao: "Sabor guaraná 1 litro.", preco: 7.00, imagem: "mate-couro.jpeg", categoria: "bebidas" },
-    { id: 25, nome: "Guaraná 2L", descricao: "Guaraná Antártica 2 litros.", preco: 12.00, imagem: "guarana-2l.jpeg", categoria: "bebidas" },
+   // Bebidas (24-29) - ATUALIZE ESTA PARTE
+{ 
+    id: 25, 
+    nome: "Guaraná 2L", 
+    descricao: "Guaraná Antártica 2 litros - o clássico brasileiro!", 
+    preco: 12.00, 
+    imagem: "guarana-2l.jpg",  // ou .png, .jpeg - USE O NOME DA SUA IMAGEM
+    categoria: "bebidas" 
+},
     { id: 26, nome: "Coca-Cola 2L", descricao: "Coca-Cola 2 litros.", preco: 15.00, imagem: "coca-cola-2l.jpeg", categoria: "bebidas" }, // CORRIGIDO
     { id: 27, nome: "Coca-Cola Lata", descricao: "Coca-Cola lata 350ml.", preco: 5.00, imagem: "coca-lata.jpeg", categoria: "bebidas" }, // CORRIGIDO
     { id: 28, nome: "Guaraná Antártica Lata", descricao: "Guaraná Antártica lata 350ml.", preco: 5.00, imagem: "guarana-lata.jpeg", categoria: "bebidas" },
@@ -166,11 +174,7 @@ function filtrarCategoria(categoria) {
     });
 }
 
-// =========================================
-// FUNÇÕES DO MODAL
-// =========================================
 function abrirModal(idProduto) {
-    // Usa o array COMPLETO 'produtos' para encontrar o produto
     const produto = produtos.find(p => p.id === idProduto);
     if (!produto) {
         alert('❌ Produto não encontrado!');
@@ -181,16 +185,28 @@ function abrirModal(idProduto) {
     document.getElementById('modal-descricao').textContent = produto.descricao;
     document.getElementById('modal-preco').textContent = `R$ ${produto.preco.toFixed(2)}`;
     
-    // Usar a imagem do produto ou fallback
+    // IMAGEM DO PRODUTO - CORREÇÃO PARA GUARANÁ 2L
     const imgElement = document.getElementById('modal-imagem');
-    const modalFallback = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMkQyRDJEIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmaWxsPSIjRkZGIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLvuI/wn5G9PC90ZXh0Pgo8L3N2Zz4K';
     
+    // Configurar imagem com fallback
     imgElement.src = produto.imagem;
     imgElement.alt = produto.nome;
+    
+    // Fallback específico para Guaraná 2L
     imgElement.onerror = function() {
-        this.src = modalFallback;
-        console.log('Modal: Imagem não carregou:', produto.imagem);
+        console.log("❌ Erro ao carregar imagem:", produto.imagem);
+        
+        // Se for Guaraná 2L e não carregou, use imagem externa
+        if (idProduto === 25) {
+            this.src = "https://d3ddx6b2p2pevg.cloudfront.net/Custom/Content/Products/10/11/1011792_refrigerante-guarana-antarctica-2l-geraozinho_m1_637657210461631928.png";
+        } else {
+            // Para outros produtos, use fallback genérico
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMkQyRDJEIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmaWxsPSIjRkZGIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLvuI/wn5G9PC90ZXh0Pgo8L3N2Zz4K';
+        }
     };
+    
+    // ... resto do código da função ...
+}
     
     // CONTROLE DE SELEÇÃO DE QUEIJO
     const selecaoQueijo = document.getElementById('selecao-queijo-batata');
@@ -599,4 +615,5 @@ style.textContent = `
         50% { transform: scale(1.1); }
     }
 `;
+
 document.head.appendChild(style);
